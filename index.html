@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YAMAHA G2E グランドピアノ | あの頃の夢を、今、あなたの部屋に。</title>
+  <meta name="description" content="1984年製造のヤマハグランドピアノG2E。コンパクトで音量調整可能、ヴィンテージの温かい音色をご自宅で。">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <style>
+    /* --------------------------------------------------
+     * 基本設定 & 変数
+     * -------------------------------------------------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --color-background: #faf9f7;
+      --color-foreground: #2c2420;
+      --color-muted: #8b7f76;
+      --color-accent: #c9a87c;
+      --color-accent-dark: #a68a63;
+      --color-border: #e8e3dd;
+      --color-card: #ffffff;
+      --font-heading: 'Playfair Display', serif;
+      --font-body: 'Inter', sans-serif;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--color-foreground);
+      background-color: var(--color-background);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-heading);
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* --------------------------------------------------
+     * ヘッダー
+     * -------------------------------------------------- */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(250, 249, 247, 0.95);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--color-border);
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    .header.scrolled {
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--color-foreground);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .cta-button {
+      background: var(--color-accent);
+      color: white;
+      padding: 0.75rem 1.75rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    .cta-button:hover {
+      background: var(--color-accent-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(201, 168, 124, 0.3);
+    }
+
+    /* --------------------------------------------------
+     * ヒーローセクション
+     * -------------------------------------------------- */
+    .hero {
+      padding: 8rem 0 6rem;
+      margin-top: 70px; /* 固定ヘッダー分の余白 */
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 50% 0%, rgba(201, 168, 124, 0.08), transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      animation: fadeInUp 1s ease-out;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: var(--color-card);
+      border: 1px solid var(--color-border);
+      padding: 0.5rem 1.25rem;
+      border-radius: 50px;
+      font-size: 0.875rem;
+      color: var(--color-muted);
+      margin-bottom: 2rem;
+      font-weight: 500;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      margin-bottom: 1.5rem;
+      color: var(--color-foreground);
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1.125rem, 2vw, 1.5rem);
+      color: var(--color-muted);
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+    
+    /* ▼▼▼ 価格表示用のCSSを追加 ▼▼▼ */
+    .hero-price {
+      margin: 3rem 0;
+      animation: fadeInUp 1s ease-out 0.2s both;
+    }
+
+    .price-label {
+      font-size: 1rem;
+      color: var(--color-muted);
+      font-weight: 500;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .price-value {
+      font-family: var(--font-heading);
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: 600;
+      color: var(--color-foreground);
+      letter-spacing: -0.02em;
+    }
+
+    .price-value .tax {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--color-muted);
+      margin-left: 0.75rem;
+      white-space: nowrap;
+    }
+    /* ▲▲▲ ここまで ▲▲▲ */
+
+    .hero-image {
+      margin-top: 4rem;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+      animation: fadeIn 1.2s ease-out 0.3s both;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    /* --------------------------------------------------
+     * 共通セクションスタイル
+     * -------------------------------------------------- */
+    .section {
+        padding: 6rem 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-title h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 1rem;
+      color: var(--color-foreground);
+    }
+
+    .section-title p {
+      font-size: 1.125rem;
+      color: var(--color-muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* --------------------------------------------------
+     * 共感セクション (お悩み)
+     * -------------------------------------------------- */
+    .empathy {
+      background: var(--color-card);
+    }
+
+    .empathy-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 3rem;
+    }
+
+    .empathy-card {
+      text-align: center;
+      padding: 2rem;
+      border-radius: 12px;
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .empathy-icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 1.5rem;
+      background: linear-gradient(135deg, var(--color-accent), var(--color-accent-dark));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: white;
+    }
+
+    .empathy-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--color-foreground);
+    }
+
+    .empathy-card p {
+      color: var(--color-muted);
+      line-height: 1.7;
+    }
+
+    /* --------------------------------------------------
+     * 特徴セクション
+     * -------------------------------------------------- */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .feature-card {
+      background: var(--color-card);
+      padding: 3rem 2.5rem;
+      border-radius: 16px;
+      border: 1px solid var(--color-border);
+      transition: all 0.3s ease, opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+      border-color: var(--color-accent);
+    }
+
+    .feature-number {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, var(--color-accent), var(--color-accent-dark));
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .feature-card h3 {
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+      color: var(--color-foreground);
+    }
+
+    .feature-card p {
+      color: var(--color-muted);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .feature-list {
+      list-style: none;
+    }
+
+    .feature-list li {
+      padding: 0.5rem 0;
+      color: var(--color-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .feature-list li::before {
+      content: '✓';
+      color: var(--color-accent);
+      font-weight: bold;
+      font-size: 1.25rem;
+    }
+
+    /* --------------------------------------------------
+     * 仕様セクション
+     * -------------------------------------------------- */
+    .specifications {
+      background: var(--color-card);
+    }
+
+    .spec-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .spec-table {
+      background: var(--color-background);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--color-border);
+    }
+
+    .spec-row {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .spec-row:last-child { border-bottom: none; }
+
+    .spec-label {
+      padding: 1.25rem 1.5rem;
+      font-weight: 600;
+      background: var(--color-card);
+      color: var(--color-foreground);
+    }
+
+    .spec-value {
+      padding: 1.25rem 1.5rem;
+      color: var(--color-muted);
+    }
+
+    .spec-gallery {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .spec-gallery-main {
+      grid-column: 1 / -1;
+    }
+
+    .spec-gallery-main, .spec-gallery > div {
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .spec-gallery img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .spec-gallery > div:hover img {
+      transform: scale(1.05);
+    }
+
+    /* --------------------------------------------------
+     * お客様の声セクション
+     * -------------------------------------------------- */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    .testimonial-card {
+      background: var(--color-card);
+      padding: 2.5rem;
+      border-radius: 16px;
+      border: 1px solid var(--color-border);
+      transition: all 0.3s ease, opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .testimonial-stars {
+      color: var(--color-accent);
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .testimonial-text {
+      color: var(--color-foreground);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .testimonial-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--color-accent), var(--color-accent-dark));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 600;
+      font-size: 1.125rem;
+    }
+
+    .testimonial-info h4 {
+      font-size: 1rem;
+      margin-bottom: 0.25rem;
+      color: var(--color-foreground);
+    }
+
+    .testimonial-info p {
+      font-size: 0.875rem;
+      color: var(--color-muted);
+    }
+
+    /* --------------------------------------------------
+     * FAQセクション
+     * -------------------------------------------------- */
+    .faq {
+      background: var(--color-card);
+    }
+
+    .faq-list {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .faq-question {
+      width: 100%;
+      padding: 1.75rem 0;
+      background: none;
+      border: none;
+      text-align: left;
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--color-foreground);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      font-family: var(--font-heading);
+      transition: color 0.3s ease;
+    }
+
+    .faq-question:hover { color: var(--color-accent); }
+
+    .faq-icon {
+      font-size: 1.5rem;
+      color: var(--color-accent);
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .faq-item.active .faq-icon { transform: rotate(45deg); }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding-bottom 0.3s ease;
+      color: var(--color-muted);
+      line-height: 1.8;
+      padding-right: 2rem;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 500px;
+      padding-bottom: 1.75rem;
+    }
+
+    /* --------------------------------------------------
+     * CTAセクション (お問い合わせ)
+     * -------------------------------------------------- */
+    .cta-section {
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 50% 50%, rgba(201, 168, 124, 0.1), transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    .cta-offers {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .cta-offer {
+      background: var(--color-card);
+      padding: 1.25rem 2rem;
+      border-radius: 12px;
+      border: 2px solid var(--color-accent);
+      font-weight: 500;
+      color: var(--color-foreground);
+    }
+
+    .cta-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    .cta-button-large, .cta-button-secondary {
+      padding: 1.125rem 3rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.125rem;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      display: inline-block;
+    }
+    
+    .cta-button-large {
+        background: var(--color-accent);
+        color: white;
+    }
+    .cta-button-large:hover {
+      background: var(--color-accent-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(201, 168, 124, 0.3);
+    }
+    
+    .cta-button-secondary {
+      background: transparent;
+      color: var(--color-foreground);
+      border: 2px solid var(--color-border);
+    }
+    .cta-button-secondary:hover {
+      border-color: var(--color-accent);
+      color: var(--color-accent);
+    }
+
+    /* --------------------------------------------------
+     * フッター
+     * -------------------------------------------------- */
+    .footer {
+      background: var(--color-foreground);
+      color: rgba(255, 255, 255, 0.7);
+      padding: 4rem 0 3rem;
+      text-align: center;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .footer-info {
+      font-size: 0.9rem;
+      line-height: 1.8;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      transition: color 0.3s ease;
+      font-size: 0.875rem;
+    }
+    .footer-links a:hover {
+      color: white;
+    }
+
+    .copyright {
+      font-size: 0.8rem;
+      margin-top: 1.5rem;
+      opacity: 0.7;
+    }
+
+
+    /* --------------------------------------------------
+     * アニメーション
+     * -------------------------------------------------- */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    /* --------------------------------------------------
+     * レスポンシブ対応
+     * -------------------------------------------------- */
+    @media (max-width: 992px) {
+        .spec-content {
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+    }
+    
+    @media (max-width: 768px) {
+      .hero { padding: 4rem 0; margin-top: 60px; }
+      .section { padding: 4rem 0; }
+      .section-title { margin-bottom: 3rem; }
+      
+      .spec-row { grid-template-columns: 1fr; }
+      .spec-label { border-bottom: 1px solid var(--color-border); }
+      
+      .cta-offers, .cta-buttons { flex-direction: column; }
+      .cta-button-large, .cta-button-secondary { width: 100%; }
+
+      .features-grid, .testimonials-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .header-content { padding: 1rem 1.5rem; }
+      .logo { font-size: 1.25rem; }
+      .cta-button { padding: 0.625rem 1.25rem; font-size: 0.875rem; }
+      .empathy-grid { grid-template-columns: 1fr; gap: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================================================
+  // ヘッダー Start
+  // ================================================== -->
+  <header class="header" id="header">
+    <div class="header-content">
+      <a href="#" class="logo">YAMAHA G2E</a>
+      <a href="https://www.toriimusic.co.jp/kaitori-contact/" class="cta-button">お問い合わせ</a>
+    </div>
+  </header>
+  <!-- ヘッダー End -->
+
+  <main>
+
+    <!-- ==================================================
+    // ヒーローセクション Start
+    // ================================================== -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-badge">1984年製造 ヴィンテージグランドピアノ</div>
+          <h1>あの頃の夢を、今、<br>あなたの部屋に。</h1>
+          <p class="hero-subtitle">
+            グランドピアノへの憧れを諦めていませんか？<br>
+            コンパクトで、音量調整可能、そしてヴィンテージの温かい音色。<br>
+            YAMAHA G2Eなら、その夢が叶います。
+          </p>
+
+          <!-- ▼▼▼ 価格表示をここに追加 ▼▼▼ -->
+          <div class="hero-price">
+            <span class="price-label">販売価格</span>
+            <div class="price-value">
+              ¥850,000 <span class="tax">(tax in ¥935,000)</span>
+            </div>
+          </div>
+          <!-- ▲▲▲ ここまで ▲▲▲ -->
+
+          <a href="https://www.toriimusic.co.jp/kaitori-contact/" class="cta-button-large">試奏のお申込み</a>
+        </div>
+        <div class="hero-image">
+          <img src="/image/LINE_ALBUM_G2_250309_17.jpg" alt="リビングに置かれた美しいYAMAHA G2E グランドピアノ">
+        </div>
+      </div>
+    </section>
+    <!-- ヒーローセクション End -->
+
+    <!-- ==================================================
+    // 共感セクション (お悩み) Start
+    // ================================================== -->
+    <section class="section empathy">
+      <div class="container">
+        <div class="section-title">
+          <h2>こんなお悩み、ありませんか?</h2>
+        </div>
+        <div class="empathy-grid">
+          <div class="empathy-card">
+            <div class="empathy-icon">📏</div>
+            <h3>部屋が狭くて<br>置けない…</h3>
+            <p>一般的なグランドピアノは大きすぎて、日本の住宅には不向き。でも、諦めたくない。</p>
+          </div>
+          <div class="empathy-card">
+            <div class="empathy-icon">💰</div>
+            <h3>新品は<br>高すぎる…</h3>
+            <p>新品のグランドピアノは数百万円。趣味で始めるには、ハードルが高すぎる。</p>
+          </div>
+          <div class="empathy-card">
+            <div class="empathy-icon">🔇</div>
+            <h3>音が大きくて<br>近所迷惑に…</h3>
+            <p>マンションやアパートでは、音量が気になって思い切り弾けない。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- 共感セクション (お悩み) End -->
+
+    <!-- ==================================================
+    // 特徴セクション Start
+    // ================================================== -->
+    <section class="section features">
+      <div class="container">
+        <div class="section-title">
+          <h2>YAMAHA G2Eが選ばれる<br>3つの理由</h2>
+          <p>コンパクト、手頃な価格、そして本物の音色</p>
+        </div>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-number">1</div>
+            <h3>コンパクトサイズで<br>どこにでも置ける</h3>
+            <p>奥行き約173cmのコンパクト設計。日本の住宅にぴったりのサイズ感で、リビングや書斎にも無理なく設置できます。</p>
+            <ul class="feature-list">
+              <li>一般的なグランドピアノ（C3クラス）より10cm以上小さい</li>
+              <li>6畳の部屋にも設置可能</li>
+              <li>圧迫感の少ないデザイン</li>
+            </ul>
+          </div>
+          <div class="feature-card">
+            <div class="feature-number">2</div>
+            <h3>繊細なタッチが<br>思いのまま</h3>
+            <p>ヤマハらしい均整の取れたアクション設計により、コンパクトサイズながらも高い表現力を実現。指先のニュアンスを正確に音へと変えてくれます。</p>
+            <ul class="feature-list">
+              <li>軽やかで安定したタッチ</li>
+              <li>反応の速いアクション機構</li>
+              <li>初心者から上級者まで満足のコントロール性</li>
+            </ul>
+          </div>
+          <div class="feature-card">
+            <div class="feature-number">3</div>
+            <h3>ヴィンテージならではの<br>温かい音色</h3>
+            <p>1984年製造のG2Eは、現代のピアノにはない独特の温かみと深みのある音色が特徴。時を経て熟成された響きをお楽しみいただけます。</p>
+            <ul class="feature-list">
+              <li>経年変化による豊かな倍音</li>
+              <li>柔らかく包み込むような響き</li>
+              <li>クラシックからジャズまで幅広く対応</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- 特徴セクション End -->
+
+    <!-- ==================================================
+    // 仕様セクション Start
+    // ================================================== -->
+    <section class="section specifications">
+      <div class="container">
+        <div class="section-title">
+          <h2>製品仕様</h2>
+          <p>YAMAHA G2Eの詳細スペック</p>
+        </div>
+        <div class="spec-content">
+          <div class="spec-table">
+            <div class="spec-row"><div class="spec-label">モデル名</div><div class="spec-value">YAMAHA G2E</div></div>
+            <div class="spec-row"><div class="spec-label">製造年代</div><div class="spec-value">1984年製</div></div>
+            <div class="spec-row"><div class="spec-label">サイズ</div><div class="spec-value">奥行き173cm × 幅149cm × 高さ101cm</div></div>
+            <div class="spec-row"><div class="spec-label">重量</div><div class="spec-value">約300kg</div></div>
+            <div class="spec-row"><div class="spec-label">鍵盤数</div><div class="spec-value">88鍵</div></div>
+            <div class="spec-row"><div class="spec-label">ペダル</div><div class="spec-value">2本ペダル(ダンパー、ソフト)</div></div>
+            <div class="spec-row"><div class="spec-label">仕上げ</div><div class="spec-value">黒鏡面艶出し塗装</div></div>
+            <div class="spec-row"><div class="spec-label">状態</div><div class="spec-value">専門技術者による整備・調整済み</div></div>
+          </div>
+          <div class="spec-gallery">
+            <div class="spec-gallery-main">
+              <img src="/image/LINE_ALBUM_G2_250309_7.jpg" alt="ピアノ鍵盤の美しいクローズアップ">
+            </div>
+            <div>
+              <img src="/image/LINE_ALBUM_G2_250309_21.jpg" alt="ピアノのペダル部分">
+            </div>
+            <div>
+              <img src="/image/LINE_ALBUM_G2_250309_24.jpg" alt="ピアノ内部のハンマーアクション">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- 仕様セクション End -->
+
+    <!-- ==================================================
+    // お客様の声セクション Start
+    // ================================================== -->
+    <section class="section testimonials">
+      <div class="container">
+        <div class="section-title">
+          <h2>お客様の声</h2>
+          <p>実際にG2Eをご購入いただいたお客様の感想</p>
+        </div>
+        <div class="testimonials-grid">
+          <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">「子供の頃からの夢だったグランドピアノを、ついに手に入れました。コンパクトなので6畳の部屋にも無理なく置けて、音色も素晴らしい。毎日弾くのが楽しみです。」</p>
+            <div class="testimonial-author"><div class="testimonial-avatar">M</div><div class="testimonial-info"><h4>M.T様</h4><p>滋賀県・40代女性</p></div></div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">「マンション住まいなので音が心配でしたが、弱音ペダルのおかげで夜でも安心して練習できます。ヴィンテージの温かい音色に癒されています。」</p>
+            <div class="testimonial-author"><div class="testimonial-avatar">K</div><div class="testimonial-info"><h4>K.S様</h4><p>京都府・50代男性</p></div></div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">「新品のグランドピアノは予算オーバーでしたが、G2Eなら手が届きました。調律もしっかりされていて、すぐに演奏を楽しめました。大満足です！」</p>
+            <div class="testimonial-author"><div class="testimonial-avatar">Y</div><div class="testimonial-info"><h4>Y.H様</h4><p>大阪府・30代女性</p></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- お客様の声セクション End -->
+
+    <!-- ==================================================
+    // FAQセクション Start
+    // ================================================== -->
+    <section class="section faq">
+      <div class="container">
+        <div class="section-title">
+          <h2>よくあるご質問</h2>
+        </div>
+        <div class="faq-list">
+          <div class="faq-item"><button class="faq-question"><span>中古品ですが、品質は大丈夫ですか？</span><span class="faq-icon">+</span></button><div class="faq-answer"><p>はい、ご安心ください。当店では専門の技術者が丁寧に調律・整音を行い、良好なコンディションに仕上げてからお届けしています。また、納品後のアフターサポートも充実しています。</p></div></div>
+          <div class="faq-item"><button class="faq-question"><span>配送・設置はどうなりますか？</span><span class="faq-icon">+</span></button><div class="faq-answer"><p>専門の運送業者が責任を持って配送・設置いたします。搬入経路の確認から設置まで、すべてお任せください。配送料は別途お見積もりいたします。</p></div></div>
+          <div class="faq-item"><button class="faq-question"><span>保証はありますか？</span><span class="faq-icon">+</span></button><div class="faq-answer"><p>はい、納品後6ヶ月間の保証をお付けしています。万が一、不具合が生じた場合は無償で修理・調整いたします。</p></div></div>
+          <div class="faq-item"><button class="faq-question"><span>実物を見てから購入できますか？</span><span class="faq-icon">+</span></button><div class="faq-answer"><p>もちろんです。ショールームでの試奏も可能です。事前にご予約いただければ、専門スタッフが丁寧にご案内いたします。</p></div></div>
+        </div>
+      </div>
+    </section>
+    <!-- FAQセクション End -->
+
+    <!-- ==================================================
+    // CTAセクション (お問い合わせ) Start
+    // ================================================== -->
+    <section class="section cta-section" id="contact">
+      <div class="container">
+        <div class="cta-content">
+          <div class="section-title">
+            <h2>今すぐ、あなたの夢を<br>現実にしませんか？</h2>
+            <p>YAMAHA G2Eで、憧れのグランドピアノライフを始めましょう。<br>在庫には限りがございます。お早めにお問い合わせください。</p>
+          </div>
+          <div class="cta-offers">
+            <div class="cta-offer">🎹 納品時無料調律</div>
+            <div class="cta-offer">🚚 配送・設置サポート</div>
+            <div class="cta-offer">✨ 6ヶ月保証</div>
+          </div>
+          <div class="cta-buttons">
+            <a href="tel:0740-22-2063" class="cta-button-large">📞 お電話でお問い合わせ</a>
+            <a href="https://www.toriimusic.co.jp/kaitori-contact/" class="cta-button-secondary">✉️ お問い合わせフォーム</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- CTAセクション (お問い合わせ) End -->
+
+  </main>
+
+  <!-- ==================================================
+  // フッター Start
+  // ================================================== -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-info">
+        <p>ヤマハ特約店株式会社トリイ</p>
+        <p>〒520-1631 滋賀県高島市今津町名小路一丁目１番地</p>
+      </div>
+      <div class="footer-links">
+        <a href="https://www.toriimusic.co.jp/law/" target="_blank" rel="noopener noreferrer">特定商取引法に基づく表記</a>
+      </div>
+      <p class="copyright">&copy; 2024 株式会社トリイ. All rights reserved.</p>
+    </div>
+  </footer>
+  <!-- フッター End -->
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // --------------------------------------------------
+      // ヘッダーのスクロール効果
+      // --------------------------------------------------
+      const header = document.getElementById('header');
+      if (header) {
+        window.addEventListener('scroll', () => {
+          if (window.pageYOffset > 50) {
+            header.classList.add('scrolled');
+          } else {
+            header.classList.remove('scrolled');
+          }
+        });
+      }
+
+      // --------------------------------------------------
+      // FAQアコーディオン
+      // --------------------------------------------------
+      const faqItems = document.querySelectorAll('.faq-item');
+      faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        question.addEventListener('click', () => {
+          const isActive = item.classList.contains('active');
+          faqItems.forEach(i => i.classList.remove('active'));
+          if (!isActive) {
+            item.classList.add('active');
+          }
+        });
+      });
+
+      // --------------------------------------------------
+      // スムーズスクロール (固定ヘッダー対応)
+      // --------------------------------------------------
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const href = this.getAttribute('href');
+          // hrefが"#"のみの場合はトップにスクロール
+          if (href === '#') {
+            window.scrollTo({
+              top: 0,
+              behavior: 'smooth'
+            });
+            return;
+          }
+          const target = document.querySelector(href);
+          
+          if (target) {
+            const headerHeight = header.offsetHeight;
+            const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+            
+            window.scrollTo({
+              top: targetPosition,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+
+      // --------------------------------------------------
+      // スクロールに応じたフェードインアニメーション
+      // --------------------------------------------------
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+            observer.unobserve(entry.target); // 一度表示されたら監視を解除
+          }
+        });
+      }, observerOptions);
+
+      // アニメーションさせたい要素を監視対象に設定
+      const animateElements = document.querySelectorAll('.empathy-card, .feature-card, .testimonial-card');
+      animateElements.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        observer.observe(el);
+      });
+    });
+  </script>
+
+</body>
+</html>
